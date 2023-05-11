@@ -4,9 +4,14 @@ import Home from "./Home";
 
 const pagesData:routerType[] =[
 {
-    title:"salam",
-    path:"",
-    element: <Home content={<About/>}/>
+    title:"homePage",
+    path:"home",
+    element: <Home />
+},
+{
+    title:"aboutPage",
+    path:"about",
+    element: <About/>
 }
 ];
 
