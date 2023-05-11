@@ -1,17 +1,14 @@
 import React from 'react';
+import Home from './pages/Home';
+import About from './pages/About';
 
 
 const App: React.FC = ()=>  {
-  const arr: string[] = ["salam","sagol",""]
 
   
   return (
     <div className="App">
-      <ul>
-        {arr.map((item,i) =>(
-        <li key={i}>{item}</li>
-         ))}
-      </ul>
+      <Home content={<About/>}/>
     </div>
   );
 }
