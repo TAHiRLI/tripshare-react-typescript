@@ -1,0 +1,30 @@
+.dropdown{
+    position: relative;
+    background-color: rgb(223, 201, 223);
+    height: 50px;
+    margin: 10px 20px;
+    padding: 15px ;
+    border-radius: 5px;
+    ul{
+        list-style-type: none;
+        position: absolute;
+        padding: 0 ;
+        bottom: 0;
+        left: 50%;
+        max-height: 200px;
+        background-color: white;
+        transform: translate(-50%,110%);
+
+       
+    } 
+    
+    &__option{
+       border-top: 1px solid gainsboro;
+       width: 100%;
+       padding: 0 20px;
+       &:hover{
+        background-color: beige;
+       }
+    }
+   
+}

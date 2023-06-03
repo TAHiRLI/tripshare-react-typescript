@@ -32,8 +32,8 @@ const Home:React.FC<PropsSetting> = (props)=> {
 
       <div className='d-flex'>
 
-      <Dropdown options={options} selection={selection} handleChange={handleSelect}/>
-      <Dropdown options={options} selection={selection} handleChange={handleSelect}/>
+      <Dropdown options={options} selection={selection?.label} handleChange={handleSelect}/>
+      <Dropdown options={options} selection={selection?.label} handleChange={handleSelect}/>
       </div>
       </div>
     </div>
