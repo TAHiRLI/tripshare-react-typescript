@@ -1,6 +1,6 @@
 export interface PropsSetting {
     options:Array<DropdownOption>,
-    selection?:DropdownOption,
+    selection?:string |undefined,
     handleChange:Function
 }
 export interface DropdownOption{
