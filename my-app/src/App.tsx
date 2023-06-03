@@ -1,6 +1,6 @@
 import React from 'react';
 import Router from './pages/router';
-
+import './App.css';
 
 const App: React.FC = ()=>  {
 
@@ -8,7 +8,6 @@ const App: React.FC = ()=>  {
   return (
     <>
      <Router/>
-    <div className='privateRoute'></div>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Dropdown from "../components/Dropdown";
 import { routerType } from "../types/router.types";
 import About from "./About";
 import Home from "./Home";

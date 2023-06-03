@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -36,4 +38,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.select{
+  height: min-content;
+}
+.pointer{
+  cursor: pointer;
 }
