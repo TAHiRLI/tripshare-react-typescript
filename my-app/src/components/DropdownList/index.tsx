@@ -2,7 +2,7 @@ import React from "react";
 import { useReducer } from "react";
 import { DropdownOption } from "../Dropdown/types";
 import Dropdown from "../Dropdown";
-import { SearchTerm } from "../../pages/Search/types";
+import { SearchTermType } from "../../pages/Search/types";
 
 const FromOptions: Array<DropdownOption> = [
   { label: "Lənkəran", value: "Lənkəran" },
@@ -20,7 +20,7 @@ const ToOptions: Array<DropdownOption> = [
   { label: "Qəbələ", value: "Qəbələ" },
 ];
 
-const reducer = (state: SearchTerm, action: any): SearchTerm => {
+const reducer = (state: SearchTermType, action: any): SearchTermType => {
   switch (action.type) {
     case "set/to":
       return {
@@ -48,7 +48,8 @@ const reducer = (state: SearchTerm, action: any): SearchTerm => {
   }
 };
 
-function DropdownList ({handleSearch}) {
+
+const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   const [state, dispatch] = useReducer(reducer, {
     from: "",
     to: "",
@@ -73,7 +74,7 @@ function DropdownList ({handleSearch}) {
   };
 
   return (
-    <div className="bg-danger p-5 d-flex">
+    <div className="bg-danger  d-flex">
       <Dropdown
         selection={state.from}
         handleChange={setFrom}
@@ -81,12 +82,18 @@ function DropdownList ({handleSearch}) {
       />
       <Dropdown selection={state.to} handleChange={setTo} options={ToOptions} />
 
-      <input type="date" onChange={setWhen} />
-      <input type="number" defaultValue={1} onChange={setCount} />
+      <input className="form-control" type="datetime-local" onChange={setWhen} />
+      <input className="form-control" type="number" defaultValue={1} onChange={setCount} />
 
-      <button onClick={handleSubmit}>Axtar</button>
+      <button className="btn btn-info" onClick={handleSubmit}>Axtar</button>
     </div>
   );
 }
 
 export default DropdownList;
+
+
+
+interface PropsSetting {
+    handleSearch: Function
+}
