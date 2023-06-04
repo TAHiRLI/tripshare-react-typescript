@@ -74,18 +74,24 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   };
 
   return (
-    <div className="bg-danger  d-flex">
-      <Dropdown
+    <div className="bg-danger d-flex flex-column  ">
+      <div className="d-flex justify-content-evenly">
+           <Dropdown
         selection={state.from}
         handleChange={setFrom}
         options={FromOptions}
       />
       <Dropdown selection={state.to} handleChange={setTo} options={ToOptions} />
-
+      </div>
+      <div className="d-flex mt-3">
       <input className="form-control" type="datetime-local" onChange={setWhen} />
       <input className="form-control" type="number" defaultValue={1} onChange={setCount} />
 
-      <button className="btn btn-info" onClick={handleSubmit}>Axtar</button>
+      </div>
+   
+
+
+      <button className="btn btn-info mt-4 px-5 " onClick={handleSubmit}>Axtar</button>
     </div>
   );
 }

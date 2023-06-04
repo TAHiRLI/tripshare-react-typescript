@@ -3,28 +3,32 @@
     margin-bottom: 0;
   }
 
-  padding: 1rem;
+  padding: .5rem ;
   background-color: aqua;
   border: 1px solid black;
   display: flex;
 
   &__carImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     img {
-      max-width: 150px;
-      min-width: 100px;
+        border-radius: 10px;
+        width: 100%;
       aspect-ratio: 4/3;
     }
   }
 
   &__info {
-    margin-left: 0.5rem;
     &__driver {
-      background-color: gainsboro;
       display: flex;
 
       &__img {
+        display: flex;
+        align-items: center;
         img {
-          max-width: 50px;
+          max-width: 40px;
           min-width: 30px;
           aspect-ratio: 1;
           border-radius: 50%;
@@ -35,7 +39,7 @@
         margin-left: .5rem;
 
         .driverName {
-          font-size: 1.5rem;
+          font-size: 1.1rem;
           font-weight: 600;
         }
       }
@@ -43,8 +47,6 @@
   }
 }
 .priceBox{
-    width: 200px;
-    height: 100%;
     background-color: #f0faff;
     text-align: center;
     border: #b9d3e0 1px solid;
@@ -55,7 +57,7 @@
         justify-content: center;
         padding: 10px 18px 10px;
         .current__price{
-            font-size: calc(24px + 12 * (100vw / 1920));
+            font-size: calc(20px + 12 * (100vw / 1920));
         }
     }
 
@@ -81,3 +83,7 @@
   
 }
 
+.trips{
+    overflow-y: scroll;
+    max-height: 97vh;
+}
