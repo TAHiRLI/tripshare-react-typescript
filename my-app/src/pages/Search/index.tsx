@@ -48,12 +48,12 @@ function SearchPage() {
   };
 
   return (
-    <div className="bg-success p-5">
-      <div className="row">
-        <div className="col-12 col-md-6 ">
+    <div className="bg-success p-2 h-min-100">
+      <div className="row g-0">
+        <div className="col-12 col-md-5 ">
           <DropdownList handleSearch={handleSubmit} />
         </div>
-        <div className="col-12 col-md-6 ">
+        <div className="col-12 col-md-7 ">
             <TripList data={Trips}/>
         </div>
       </div>

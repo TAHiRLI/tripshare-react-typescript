@@ -13,8 +13,8 @@ const TripList:React.FC<PropsSetting> = ({data}) => {
     })
 
   return (
-    <div className='bg-warning'>
-    <div>Trips</div>
+    <div className='bg-warning p-2'>
+    <div  >Trips</div>
         {renderedTrips}
     </div>
   )
