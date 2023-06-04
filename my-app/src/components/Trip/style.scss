@@ -1,0 +1,83 @@
+.trip {
+  p {
+    margin-bottom: 0;
+  }
+
+  padding: 1rem;
+  background-color: aqua;
+  border: 1px solid black;
+  display: flex;
+
+  &__carImg {
+    img {
+      max-width: 150px;
+      min-width: 100px;
+      aspect-ratio: 4/3;
+    }
+  }
+
+  &__info {
+    margin-left: 0.5rem;
+    &__driver {
+      background-color: gainsboro;
+      display: flex;
+
+      &__img {
+        img {
+          max-width: 50px;
+          min-width: 30px;
+          aspect-ratio: 1;
+          border-radius: 50%;
+        }
+      }
+
+      &__info {
+        margin-left: .5rem;
+
+        .driverName {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+.priceBox{
+    width: 200px;
+    height: 100%;
+    background-color: #f0faff;
+    text-align: center;
+    border: #b9d3e0 1px solid;
+
+    &__price{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 18px 10px;
+        .current__price{
+            font-size: calc(24px + 12 * (100vw / 1920));
+        }
+    }
+
+    &__time{
+        border-bottom: 1px solid #b9d3e0;
+        height: 50px;
+        line-height: 50px;
+    }
+    .btn-order{
+        padding: 0 10px;
+        text-transform: uppercase;
+        height: 50px;
+        cursor: pointer;
+        color: white;
+        border: none;
+        margin-top: 15px;
+        background-color: #ff9b22;
+        font-size: calc(14px + 4 * (100vw / 1920));
+        &:hover{
+            background-color: #ffa73c;
+        }
+    }
+  
+}
+
