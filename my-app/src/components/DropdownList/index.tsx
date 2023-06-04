@@ -4,21 +4,7 @@ import { DropdownOption } from "../Dropdown/types";
 import Dropdown from "../Dropdown";
 import { SearchTermType } from "../../pages/Search/types";
 
-const FromOptions: Array<DropdownOption> = [
-  { label: "Lənkəran", value: "Lənkəran" },
-  { label: "Bakı", value: "Bakı" },
-  { label: "Masallı", value: "Masallı" },
-  { label: "Sumqayıt", value: "Sumqayıt" },
-  { label: "Qəbələ", value: "Qəbələ" },
-];
 
-const ToOptions: Array<DropdownOption> = [
-  { label: "Lənkəran", value: "Lənkəran" },
-  { label: "Bakı", value: "Bakı" },
-  { label: "Masallı", value: "Masallı" },
-  { label: "Sumqayıt", value: "Sumqayıt" },
-  { label: "Qəbələ", value: "Qəbələ" },
-];
 
 const reducer = (state: SearchTermType, action: any): SearchTermType => {
   switch (action.type) {
@@ -50,6 +36,24 @@ const reducer = (state: SearchTermType, action: any): SearchTermType => {
 
 
 const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
+
+  const FromOptions: Array<DropdownOption> = [
+    { label: "Lənkəran", value: "Lənkəran" },
+    { label: "Bakı", value: "Bakı" },
+    { label: "Masallı", value: "Masallı" },
+    { label: "Sumqayıt", value: "Sumqayıt" },
+    { label: "Qəbələ", value: "Qəbələ" },
+  ];
+  
+  const ToOptions: Array<DropdownOption> = [
+    { label: "Lənkəran", value: "Lənkəran" },
+    { label: "Bakı", value: "Bakı" },
+    { label: "Masallı", value: "Masallı" },
+    { label: "Sumqayıt", value: "Sumqayıt" },
+    { label: "Qəbələ", value: "Qəbələ" },
+  ];
+
+
   const [state, dispatch] = useReducer(reducer, {
     from: "",
     to: "",
@@ -57,9 +61,17 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
     count: 0,
   });
   const setTo = (option: DropdownOption) => {
+    if(option.value == state.from){
+    dispatch({ type: "set/from", payload: null});
+
+    }
     dispatch({ type: "set/to", payload: option.value });
   };
   const setFrom = (option: DropdownOption) => {
+    if(option.value == state.to){
+      dispatch({ type: "set/to", payload: null });
+      
+    }
     dispatch({ type: "set/from", payload: option.value });
   };
   const setWhen = (e) => {
@@ -73,15 +85,18 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
     handleSearch(state)
   };
 
+  let filteredFromOptions = FromOptions.filter((option)=>  option.value !== state.from )
+  let filteredToOptions = ToOptions.filter((option)=>  option.value !== state.to)
+
   return (
     <div className="bg-danger d-flex flex-column  ">
       <div className="d-flex justify-content-evenly">
            <Dropdown
         selection={state.from}
         handleChange={setFrom}
-        options={FromOptions}
+        options={filteredFromOptions}
       />
-      <Dropdown selection={state.to} handleChange={setTo} options={ToOptions} />
+      <Dropdown selection={state.to} handleChange={setTo} options={filteredToOptions} />
       </div>
       <div className="d-flex mt-3">
       <input className="form-control" type="datetime-local" onChange={setWhen} />

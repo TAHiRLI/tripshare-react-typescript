@@ -3,11 +3,6 @@ import { TripType } from '../../pages/Search/types'
 import Trip from '../Trip';
 
 const TripList:React.FC<PropsSetting> = ({data}) => {
-
-    console.log(data);
-
-
-
     const renderedTrips = data.map((item,i)=>{
        return <Trip key={i} data={item} />
     })

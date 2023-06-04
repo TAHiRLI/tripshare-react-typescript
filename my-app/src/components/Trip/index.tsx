@@ -6,7 +6,6 @@ import {FaStar} from "react-icons/fa"
 import "./style.scss";
 
 const Trip: React.FC<PropsSetting> = ({ data }) => {
-  console.log("Tripdata =", data);
   return (
     <div className="trip row g-0 mt-2">
       <div className="trip__carImg col-5 m-auto d-block col-sm-3">
