@@ -1,12 +1,14 @@
 import React from "react";
 import { TripType } from "../../pages/Search/types";
+import {FaStar} from "react-icons/fa"
+
 
 import "./style.scss";
 
 const Trip: React.FC<PropsSetting> = ({ data }) => {
   console.log("Tripdata =", data);
   return (
-    <div className="trip row g-0">
+    <div className="trip row g-0 mt-2">
       <div className="trip__carImg col-5 m-auto d-block col-sm-3">
         <img src={data.driver.carImg} alt="car" />
 
@@ -21,8 +23,9 @@ const Trip: React.FC<PropsSetting> = ({ data }) => {
           </div>
           <div className="trip__info__driver__info">
             <p className="driverName">{data.driver.fullname}</p>
-            <p>
-              * {data.driver.rating} / 5{" "}
+            <p className="d-flex align-items-center">
+              
+              <FaStar className="me-2 text-warning"/> {data.driver.rating} / 5
             </p>
           </div>
         </div>

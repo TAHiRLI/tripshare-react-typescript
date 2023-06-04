@@ -22,7 +22,6 @@
 
   &__info {
     &__driver {
-      background-color: gainsboro;
       display: flex;
 
       &__img {
@@ -84,3 +83,7 @@
   
 }
 
+.trips{
+    overflow-y: scroll;
+    max-height: 97vh;
+}

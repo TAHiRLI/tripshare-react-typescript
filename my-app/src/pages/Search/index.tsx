@@ -5,7 +5,100 @@ import TripList from "../../components/TripList";
 
 const Trips: Array<TripType> = [
   {
-    from: "Baki",
+    from: "Bakı",
+    to: "Lənkəran",
+    when: "2023-06-07T15:20",
+    totalSeats: 4,
+    availableSeats: 2,
+    smoking:false,
+    pets:false,
+    luggage:true,
+    pickupLocations: [
+      {
+        name: "Lökbatan dairəsi",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+      {
+        name: "Masallı",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+    ],
+    driver:
+    {
+        id:1,
+        fullname:"Tahir Tahirli",
+        rating:4.8,
+        numOfReviews:12,
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmkp9a2rrD1Sskb9HLt5mDaTt4QaIs8CcBg&usqp=CAU",
+        carImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQKe4VGrcTdNTVKxLho3AhO9II74F63oRmvA&usqp=CAU"
+    },
+      
+  },
+
+  {
+    from: "Bakı",
+    to: "Lənkəran",
+    when: "2023-06-07T15:20",
+    totalSeats: 4,
+    availableSeats: 2,
+    smoking:false,
+    pets:false,
+    luggage:true,
+    pickupLocations: [
+      {
+        name: "Lökbatan dairəsi",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+      {
+        name: "Masallı",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+    ],
+    driver:
+    {
+        id:1,
+        fullname:"Tahir Tahirli",
+        rating:4.8,
+        numOfReviews:12,
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmkp9a2rrD1Sskb9HLt5mDaTt4QaIs8CcBg&usqp=CAU",
+        carImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQKe4VGrcTdNTVKxLho3AhO9II74F63oRmvA&usqp=CAU"
+    },
+      
+  },
+
+  {
+    from: "Bakı",
+    to: "Lənkəran",
+    when: "2023-06-07T15:20",
+    totalSeats: 4,
+    availableSeats: 2,
+    smoking:false,
+    pets:false,
+    luggage:true,
+    pickupLocations: [
+      {
+        name: "Lökbatan dairəsi",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+      {
+        name: "Masallı",
+        link: "https://goo.gl/maps/6G4NwMS9dJeXJe8F7?coh=178571&entry=tt",
+      },
+    ],
+    driver:
+    {
+        id:1,
+        fullname:"Tahir Tahirli",
+        rating:4.8,
+        numOfReviews:12,
+        img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYmkp9a2rrD1Sskb9HLt5mDaTt4QaIs8CcBg&usqp=CAU",
+        carImg:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQKe4VGrcTdNTVKxLho3AhO9II74F63oRmvA&usqp=CAU"
+    },
+      
+  },
+
+  {
+    from: "Bakı",
     to: "Lənkəran",
     when: "2023-06-07T15:20",
     totalSeats: 4,
