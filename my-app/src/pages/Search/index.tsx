@@ -6,7 +6,7 @@ import TripList from "../../components/TripList";
 const Trips: Array<TripType> = [
   {
     from: "Masallı",
-    to: "Lənkəran",
+    to: "Quba",
     when: "2023-06-07T15:20",
     totalSeats: 4,
     availableSeats: 2,
@@ -66,8 +66,8 @@ const Trips: Array<TripType> = [
 
   {
     from: "Bakı",
-    to: "Lənkəran",
-    when: "2023-06-07T15:20",
+    to: "Quba",
+    when: "2023-07-07T15:20",
     totalSeats: 4,
     availableSeats: 2,
     smoking: false,
@@ -97,7 +97,7 @@ const Trips: Array<TripType> = [
   {
     from: "Bakı",
     to: "Lənkəran",
-    when: "2023-06-07T15:20",
+    when: "2023-06-05T15:20",
     totalSeats: 4,
     availableSeats: 2,
     smoking: false,
@@ -135,47 +135,31 @@ function SearchPage() {
   };
 
   let renderedTrips = Trips;
+
   if (searchTerm) {
+    renderedTrips = Trips.filter((item) => {
+      if (searchTerm.from && item.from !== searchTerm.from) 
+        return false;
+      
+      if (searchTerm.to && item.to !== searchTerm.to) 
+        return false;
+      
 
-    if (searchTerm.from) {
-      renderedTrips = renderedTrips.filter((item) => {
-        return (
-          item.from === (searchTerm.from ?? item.from) 
-        );
-      });
-    }
+      if (searchTerm.when && new Date(item.when) < new Date(searchTerm.when)) 
+        return false;
 
-    if (searchTerm.to) {
-      renderedTrips = renderedTrips.filter((item) => {
-        return (
-          item.to === (searchTerm.to ?? item.from) 
-        );
-      });
-    }
+      if (searchTerm.count && item.availableSeats < searchTerm.count)
+        return false;
 
-    if(searchTerm.when){
-      console.log(searchTerm.when)
-      renderedTrips = renderedTrips.filter((item) => {
-          console.log(item.when);
-          
-        return (
-          
-          item.when === (searchTerm.when ?? item.when)
-        );
-      });
-    }
-
-    if(searchTerm.count){
-      renderedTrips = renderedTrips.filter((item) => {
-        return (
-          item.availableSeats === searchTerm.count
-        );
-      });
-    }
-
-   
-    
+      return true;
+    });
   }
+
+  renderedTrips.sort(function (a, b) {
+    let dateA = new Date(a.when);
+    let dateB = new Date(b.when);
+    return dateA.getTime() - dateB.getTime();
+  });
 
   return (
     <div className="bg-success p-2 h-min-100">
