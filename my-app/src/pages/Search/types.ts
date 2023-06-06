@@ -1,7 +1,7 @@
 export interface SearchTermType {
   to?: string;
   from?: string;
-  count?: number;
+  count: number | 0;
   when?: string;
 }
 
