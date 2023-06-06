@@ -29,6 +29,13 @@ const reducer = (state: SearchTermType, action: any): SearchTermType => {
         ...state,
         count: action.payload,
       };
+    case "reset":
+    return {
+      from:undefined,
+      to:undefined,
+      count:0,
+      when:undefined
+    }
     default:
       return state;
   }
@@ -57,6 +64,8 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   ];
 
 
+  let dateInputEl = React.useRef<HTMLInputElement>(null);
+
   const [state, dispatch] = useReducer(reducer, {
     from: undefined,
     to: undefined,
@@ -83,7 +92,14 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   const setCount = (e) => {
     dispatch({ type: "set/count", payload: parseInt(e.target.value) });
   };
+  const resetState = ()=>{
+    dispatch({type:"reset"})
+    if(dateInputEl.current){
+      dateInputEl.current.value = ""
 
+    }
+  }
+  // test
   const handleSubmit = () => {
     handleSearch(state)
   };
@@ -92,7 +108,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   let filteredToOptions = ToOptions.filter((option)=>  option.value !== state.to)
 
   return (
-    <div className="bg-danger d-flex flex-column  ">
+    <div className="bg-warning d-flex flex-column  ">
       <div className="d-flex justify-content-evenly">
            <Dropdown
         selection={state.from}
@@ -102,7 +118,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
       <Dropdown selection={state.to} handleChange={setTo} options={filteredToOptions} />
       </div>
       <div className="d-flex mt-3">
-      <input className="form-control" type="datetime-local" onChange={setWhen} />
+      <input className="form-control" type="datetime-local" onChange={setWhen} ref={dateInputEl} />
       <input className="form-control" type="number" defaultValue={1} onChange={setCount} />
 
       </div>
@@ -110,6 +126,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
 
 
       <button className="btn btn-info mt-4 px-5 " onClick={handleSubmit}>Axtar</button>
+      <button className="btn btn-danger mt-4 px-5 " onClick={resetState}>Reset</button>
     </div>
   );
 }
