@@ -38,37 +38,40 @@ const reducer = (state: SearchTermType, action: any): SearchTermType => {
 const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
 
   const FromOptions: Array<DropdownOption> = [
+    {label:"Select...", value:null},
     { label: "Lənkəran", value: "Lənkəran" },
     { label: "Bakı", value: "Bakı" },
     { label: "Masallı", value: "Masallı" },
     { label: "Sumqayıt", value: "Sumqayıt" },
-    { label: "Qəbələ", value: "Qəbələ" },
+    { label: "Quba", value: "Quba" },
+    
   ];
   
   const ToOptions: Array<DropdownOption> = [
+    {label:"Select...", value:null},
     { label: "Lənkəran", value: "Lənkəran" },
     { label: "Bakı", value: "Bakı" },
     { label: "Masallı", value: "Masallı" },
     { label: "Sumqayıt", value: "Sumqayıt" },
-    { label: "Qəbələ", value: "Qəbələ" },
+    { label: "Quba", value: "Quba" },
   ];
 
 
   const [state, dispatch] = useReducer(reducer, {
-    from: "",
-    to: "",
-    when: "",
+    from: undefined,
+    to: undefined,
+    when: undefined,
     count: 0,
   });
   const setTo = (option: DropdownOption) => {
-    if(option.value == state.from){
+    if(option.value === state.from){
     dispatch({ type: "set/from", payload: null});
 
     }
     dispatch({ type: "set/to", payload: option.value });
   };
   const setFrom = (option: DropdownOption) => {
-    if(option.value == state.to){
+    if(option.value === state.to){
       dispatch({ type: "set/to", payload: null });
       
     }

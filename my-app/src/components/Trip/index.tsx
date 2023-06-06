@@ -35,6 +35,7 @@ const Trip: React.FC<PropsSetting> = ({ data }) => {
           <p>Siqaret: Olmaz</p>
           <p>Ev Heyvanı: Olmaz</p>
           <p>Baqaj: Uyğundur</p>
+          <p>Oturacaq: {data.availableSeats}</p>
         </div>
    
       </div>
