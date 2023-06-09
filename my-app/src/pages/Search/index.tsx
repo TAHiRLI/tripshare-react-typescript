@@ -2,6 +2,7 @@ import React from "react";
 import DropdownList from "../../components/DropdownList";
 import { SearchTermType, TripType } from "./types";
 import TripList from "../../components/TripList";
+import { cityService } from "../../APIs/services/cityService";
 
 const Trips: Array<TripType> = [
   {
@@ -133,6 +134,14 @@ function SearchPage() {
   const handleSubmit = (item: SearchTermType) => {
     setSearchTerm(item);
   };
+
+  let cities
+  async function  getCity(){
+     cities = await  cityService.getAll();
+     console.log(cities);
+  }
+getCity()
+
 
   let renderedTrips = Trips;
 

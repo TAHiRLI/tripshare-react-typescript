@@ -44,6 +44,10 @@ const reducer = (state: SearchTermType, action: any): SearchTermType => {
 
 const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
 
+
+
+  
+
   const FromOptions: Array<DropdownOption> = [
     {label:"Select...", value:null},
     { label: "Lənkəran", value: "Lənkəran" },
