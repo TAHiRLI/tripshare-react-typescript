@@ -87,6 +87,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
     dispatch({ type: "set/count", payload: parseInt(e.target.value) });
   };
   const resetState = ()=>{
+    // resets the searching state
     dispatch({type:"reset"})
     if(dateInputEl.current)
       dateInputEl.current.value = ""
@@ -97,7 +98,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   }
 
 
-  
+
   const handleSubmit = () => {
     handleSearch(state)
   };
