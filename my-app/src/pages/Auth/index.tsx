@@ -4,7 +4,7 @@ import Login from './components/Login'
 import Register from './components/Register';
 
 function AuthPage() {
- const [isMember, setIsMemeber] = React.useState<boolean>(false);
+ const [isMember, setIsMemeber] = React.useState<boolean>(true);
   
  const changeComponent = ()=>{
   setIsMemeber(state=>!state)
