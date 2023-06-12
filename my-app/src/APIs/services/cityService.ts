@@ -6,7 +6,7 @@ class CityService extends HttpClient {
   }
 
   async getAll() {
-    return await this.get("City?page=1", {});
+    return await this.get("Cities/all", {});
   }
   async getById(id: number) {
     return await this.get(`cities/${id}`);

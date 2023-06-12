@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useReducer } from "react";
 import { DropdownOption } from "../Dropdown/types";
 import Dropdown from "../Dropdown";
 import { SearchTermType } from "../../pages/Search/types";
+import { cityService } from "../../APIs/services/cityService";
 
 
 
@@ -44,31 +45,20 @@ const reducer = (state: SearchTermType, action: any): SearchTermType => {
 
 const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
 
+  const [cities, setCities] = React.useState<Array<DropdownOption>>([])
 
-
+  React.useEffect(()=>{
+    let response
+    async function  getCities(){
+       response = await  cityService.getAll().catch(err=>console.log(err));;
+       setCities(() =>[ {label:"Select...", value:null}, ...response.data] 
+       );
+    }
+  getCities()
+  },[])
   
-
-  const FromOptions: Array<DropdownOption> = [
-    {label:"Select...", value:null},
-    { label: "Lənkəran", value: "Lənkəran" },
-    { label: "Bakı", value: "Bakı" },
-    { label: "Masallı", value: "Masallı" },
-    { label: "Sumqayıt", value: "Sumqayıt" },
-    { label: "Quba", value: "Quba" },
-    
-  ];
-  
-  const ToOptions: Array<DropdownOption> = [
-    {label:"Select...", value:null},
-    { label: "Lənkəran", value: "Lənkəran" },
-    { label: "Bakı", value: "Bakı" },
-    { label: "Masallı", value: "Masallı" },
-    { label: "Sumqayıt", value: "Sumqayıt" },
-    { label: "Quba", value: "Quba" },
-  ];
-
-
   let dateInputEl = React.useRef<HTMLInputElement>(null);
+  let numberInputEl = React.useRef<HTMLInputElement>(null);
 
   const [state, dispatch] = useReducer(reducer, {
     from: undefined,
@@ -98,18 +88,22 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
   };
   const resetState = ()=>{
     dispatch({type:"reset"})
-    if(dateInputEl.current){
+    if(dateInputEl.current)
       dateInputEl.current.value = ""
+    if(numberInputEl.current)
+      numberInputEl.current.value = "1"
 
-    }
+      handleSearch({})
   }
-  // test
+
+
+  
   const handleSubmit = () => {
     handleSearch(state)
   };
 
-  let filteredFromOptions = FromOptions.filter((option)=>  option.value !== state.from )
-  let filteredToOptions = ToOptions.filter((option)=>  option.value !== state.to)
+  let filteredFromOptions = cities.filter((option)=>  option.value !== state.from )
+  let filteredToOptions = cities.filter((option)=>  option.value !== state.to)
 
   return (
     <div className="bg-warning d-flex flex-column  ">
@@ -123,7 +117,7 @@ const DropdownList:React.FC<PropsSetting> =  ({handleSearch})=> {
       </div>
       <div className="d-flex mt-3">
       <input className="form-control" type="datetime-local" onChange={setWhen} ref={dateInputEl} />
-      <input className="form-control" type="number" defaultValue={1} onChange={setCount} />
+      <input className="form-control" type="number" defaultValue={1} onChange={setCount} ref={numberInputEl} />
 
       </div>
    
