@@ -135,12 +135,9 @@ function SearchPage() {
     setSearchTerm(item);
   };
 
-  let cities
-  async function  getCity(){
-     cities = await  cityService.getAll();
-     console.log(cities);
-  }
-getCity()
+
+ 
+
 
 
   let renderedTrips = Trips;
