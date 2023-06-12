@@ -1,8 +1,9 @@
-import Dropdown from "../components/Dropdown";
 import { routerType } from "../types/router.types";
 import About from "./About";
 import Home from "./Home";
+import Login from "./Auth/components/Login";
 import SearchPage from "./Search";
+import AuthPage from "./Auth";
 
 const pagesData:routerType[] =[
 {
@@ -19,7 +20,13 @@ const pagesData:routerType[] =[
     title:"SearchPage",
     path:"search",
     element:<SearchPage/>
+},
+{
+    title:"Auth Page",
+    path:"Authentication",
+    element: <AuthPage/>
 }
+
 ];
 
 export default pagesData;
