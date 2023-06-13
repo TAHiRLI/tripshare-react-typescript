@@ -11,7 +11,7 @@ function Login({ changeOption }) {
   // ====================
   // Formik
   // ====================
-  const { values, handleBlur, handleChange, handleSubmit, errors, touched,setErrors } =
+  const { values, handleBlur, handleChange, handleSubmit,setErrors, errors, touched, isSubmitting } =
     useFormik({
       initialValues: {
         phone: "",
@@ -23,7 +23,7 @@ function Login({ changeOption }) {
 
 
 
-   async function onSubmit(data) {
+   async function onSubmit(values, actions) {
     
       let mydata ={
         username:"superadmin",
@@ -39,6 +39,7 @@ function Login({ changeOption }) {
               authState: {roles:["admin", "superAdmin"]},
           }
           )
+          actions.resetForm();
 
        }).catch(err=>{
         console.log(err)
@@ -95,7 +96,7 @@ function Login({ changeOption }) {
         </div>
 
         <div className="">
-          <button className="m-auto d-block mt-3 btn btn-success" type="submit">Daxil ol</button>
+          <button disabled={isSubmitting} className="m-auto d-block mt-3 btn btn-success" type="submit">Daxil ol</button>
         </div>
       </form>
 
