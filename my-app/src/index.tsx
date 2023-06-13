@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { AuthProvider } from 'react-auth-kit'
+
 import App from "./App";
 import {
   BrowserRouter as Router,
@@ -11,11 +13,18 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <>
+  <AuthProvider
+  authType = {'cookie'}
+  authName={'_auth'}
+  cookieDomain={window.location.hostname}
+  cookieSecure={false}
+  >
     <Router>
       <Switch>
         <App />
       </Switch>
     </Router>
+  </AuthProvider>
   </>
 );
 

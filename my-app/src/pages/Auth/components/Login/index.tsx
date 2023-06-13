@@ -1,11 +1,17 @@
 import { useFormik } from "formik";
-import React from "react";
 import { loginSchema } from "../../../../schemas";
+import { loginService } from "../../../../APIs/services/loginService";
+import { useSignIn } from "react-auth-kit";
 
-const onSubmit = () => {};
 
 function Login({ changeOption }) {
-  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+
+  const signIn = useSignIn();
+
+  // ====================
+  // Formik
+  // ====================
+  const { values, handleBlur, handleChange, handleSubmit,setErrors, errors, touched, isSubmitting } =
     useFormik({
       initialValues: {
         phone: "",
@@ -15,12 +21,37 @@ function Login({ changeOption }) {
       onSubmit,
     });
 
-  console.log(errors);
+
+
+   async function onSubmit(values, actions) {
+    
+      let mydata ={
+        username:"superadmin",
+        password:"Admin123"
+      }
+        loginService.submitLogin(mydata).then(res=>{
+        
+          signIn(
+            {
+              token: res.data.token,
+              expiresIn:100,
+              tokenType: "Bearer",
+              authState: {roles:["admin", "superAdmin"]},
+          }
+          )
+          actions.resetForm();
+
+       }).catch(err=>{
+        console.log(err)
+        
+        setErrors({phone:"Istifadəçi adı və ya şifrə yanlışdır"});
+       });
+    
+    };
 
   // change component
 
   const handleClick = (e) => {
-    e.preventDefault();
     changeOption();
   };
   return (
@@ -42,6 +73,7 @@ function Login({ changeOption }) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+        {errors.phone && touched.phone && <small className="text-danger">{errors.phone}</small>}  
         </div>
 
         <div className="my-3">
@@ -59,17 +91,19 @@ function Login({ changeOption }) {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+        {errors.password && touched.password && <small className="text-danger">{errors.password}</small>}  
+
         </div>
 
         <div className="">
-          <button className="m-auto d-block mt-3 btn btn-success">Daxil</button>
+          <button disabled={isSubmitting} className="m-auto d-block mt-3 btn btn-success" type="submit">Daxil ol</button>
         </div>
       </form>
 
       <p className="text-center mt-3 mb-0">
-        <a href="" onClick={handleClick}>
+          <span className="text-decoration-underline text-primary pointer" onClick={handleClick}>
           Qeydiyyatdan keç
-        </a>
+        </span>
       </p>
     </div>
   );
