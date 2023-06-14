@@ -2,11 +2,14 @@ import { useFormik } from "formik";
 import { loginSchema } from "../../../../schemas";
 import { loginService } from "../../../../APIs/services/loginService";
 import { useSignIn } from "react-auth-kit";
+import usePhoneTrimmer from "../../../../hooks/usePhoneTrimmer";
 
 
 function Login({ changeOption }) {
-
+  
   const signIn = useSignIn();
+  const phoneTrimmer  = usePhoneTrimmer();
+
 
   // ====================
   // Formik
@@ -22,19 +25,18 @@ function Login({ changeOption }) {
     });
 
 
-
-   async function onSubmit(values, actions) {
     
-      let mydata ={
-        username:"superadmin",
-        password:"Admin123"
+    
+    async function onSubmit(values, actions) {
+      let data ={
+        username: phoneTrimmer(values.phone),
+        password:values.password
       }
-        loginService.submitLogin(mydata).then(res=>{
-        
+        loginService.submitLogin(data).then(res=>{
           signIn(
             {
               token: res.data.token,
-              expiresIn:100,
+              expiresIn: 1000,
               tokenType: "Bearer",
               authState: {roles:["admin", "superAdmin"]},
           }
@@ -42,8 +44,6 @@ function Login({ changeOption }) {
           actions.resetForm();
 
        }).catch(err=>{
-        console.log(err)
-        
         setErrors({phone:"Istifadəçi adı və ya şifrə yanlışdır"});
        });
     
@@ -51,7 +51,7 @@ function Login({ changeOption }) {
 
   // change component
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     changeOption();
   };
   return (
@@ -68,7 +68,7 @@ function Login({ changeOption }) {
             type="text"
             id="phone"
             name="phone"
-            placeholder="(xx) xxx-xx-xx"
+            placeholder="(xxx) xxx-xx-xx"
             value={values.phone}
             onChange={handleChange}
             onBlur={handleBlur}
