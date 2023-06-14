@@ -2,6 +2,7 @@ import React from 'react'
 import "./style.scss"
 import Login from './components/Login'
 import Register from './components/Register';
+import { Outlet } from 'react-router-dom';
 
 function AuthPage() {
  const [isMember, setIsMemeber] = React.useState<boolean>(true);
@@ -17,7 +18,7 @@ function AuthPage() {
         {isMember? <Login changeOption={changeComponent}/>: <Register changeOption={changeComponent}/> }
 
       </div>
-        
+        <Outlet/>
 
     </div>
   )
