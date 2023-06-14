@@ -1,7 +1,6 @@
 import { routerType } from "../types/router.types";
 import About from "./About";
 import Home from "./Home";
-import Login from "./Auth/components/Login";
 import SearchPage from "./Search";
 import AuthPage from "./Auth";
 
