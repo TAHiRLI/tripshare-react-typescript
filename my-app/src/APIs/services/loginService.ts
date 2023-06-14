@@ -6,7 +6,11 @@ class LoginService extends HttpClient {
     }
 
    async submitLogin(body:object){
-    return this.post("Accounts/Login", body , {});
+    return await this.post("Accounts/Login", body , {});
+   }
+
+   async requestRegister(body:object){
+    return await this.post("Accounts/register", body,{})
    }
 
 }
