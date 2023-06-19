@@ -5,11 +5,11 @@ class LoginService extends HttpClient {
         super("https://localhost:7136/api")
     }
 
-   async submitLogin(body:object){
+   async submitLogin(body:{number:string; password:string}){
     return await this.post("Accounts/Login", body , {});
    }
 
-   async requestRegister(body:object){
+   async requestRegister(body:{number:string; password:string; confirmPassword:string; fullname:string;}){
     return await this.post("Accounts/register", body,{})
    }
 

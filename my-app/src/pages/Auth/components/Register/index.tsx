@@ -29,7 +29,7 @@ function Register({ changeOption }) {
 
   async function onSubmit(data) {
     let myData = {
-      phone:phoneTrimmer(data.phone),
+      number:phoneTrimmer(data.phone),
       fullname:data.fullname,
       password:data.password,
       confirmPassword:data.confirmPassword

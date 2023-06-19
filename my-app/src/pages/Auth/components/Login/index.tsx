@@ -29,7 +29,7 @@ function Login({ changeOption }) {
     
     async function onSubmit(values, actions) {
       let data ={
-        username: phoneTrimmer(values.phone),
+        number: phoneTrimmer(values.phone),
         password:values.password
       }
         loginService.submitLogin(data).then(res=>{
