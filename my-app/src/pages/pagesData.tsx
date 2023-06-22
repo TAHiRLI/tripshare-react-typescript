@@ -3,6 +3,7 @@ import About from "./About";
 import Home from "./Home";
 import SearchPage from "./Search";
 import AuthPage from "./Auth";
+import CreateTrip from "./CreateTrip";
 
 const pagesData:routerType[] =[
 {
@@ -24,6 +25,11 @@ const pagesData:routerType[] =[
     title:"Auth Page",
     path:"Authentication",
     element: <AuthPage/>
+},
+{
+    title:"Trip create Page",
+    path:"Create-Trip",
+    element: <CreateTrip/>
 }
 
 ];
